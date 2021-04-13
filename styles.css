@@ -1,0 +1,507 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+*{
+	margin:0;
+	padding:0;
+	border:none;
+	outline:none;
+}
+body{
+	background :#262626;
+	overscroll-behavior: contain;
+	height:100vh;
+	touch-action: none;
+	font-family: 'Nunito', sans-serif;
+	-moz-user-select: none; /* Firefox */
+	-webkit-user-select: none; /* Chrome, Safari, Opéra depuis la version 15 */
+	-ms-user-select: none; /* Internet explorer depuis la version 10 et Edge */
+	user-select: none; /* Propriété standard */
+}
+<style>
+    #drawSurface
+    {
+        touch-action: none; /* Disable touch behaviors, like pan and zoom */
+    }
+</style>
+
+
+.box{
+	margin: 50px;
+}
+.box a{
+	background-color: #3498DB;
+	color:white;
+	text-decoration:none;
+	padding:10px 20px;
+	border-radius:10px;
+	font-family:'Pacifico',cursive;
+	border-bottom:5px solid #2980B9;
+	text-shadow:0px -2px #2980B9;
+	transition:all .1s;
+	-webkit-transition:all .1s;
+	float:left;
+}
+
+
+
+.boxsept{
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	height: 2%;
+	background: #1314116;
+	font-family: arial;
+}
+.boxbttndjouer{
+	position: flex;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	height: 20%;
+	background: #1314116;
+	font-family: arial;
+}
+.jouerbutton{
+	text-decoration:none;
+	color : white;
+	font-family: arial, sans-serif;
+	background:black;
+	height:60px;
+	width:200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #892cdc;
+	overflow: hidden;
+	font-size: 1.3em;
+	font-weight: 700;
+	z-index: 0;
+	position:relative;
+}
+
+.txt{
+
+	width: 50%;
+	height: 100%;
+    background: #1314116;
+    position: relative;
+}
+
+h1{
+    position: relative;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+    color:white;
+    font-size: 30px;
+}
+h2{
+    position: relative;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+    color:white;
+    font-size: 150px;
+}
+h3{
+    position: relative;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+    color:white;
+    font-size: 20px;
+}
+
+.dot1{
+	position: relative;
+	top: 0px;
+	left: -250px;
+	width:5px;
+	height: 5px;
+	background:#fff;
+}
+.dot2{
+	position: relative;
+	top: 500px;
+	left: -250px;
+	width:5px;
+	height: 5px;
+	background:#fff;
+}
+.dot3{
+	position: relative;
+	top: 0px;
+	left: 250px;
+	width:5px;
+	height: 5px;
+	background:#fff;
+}
+
+.boxscore {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0; 	
+	margin: auto;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	background: #1314116;
+	overflow: hidden;
+    white-space: nowrap;
+}
+
+.boxsumdist {
+	width: 10%;
+	height: 10%;
+	
+	position: absolute;
+	top:50%;
+	bottom:0;
+	left: 0;
+	right: 0;
+  	
+	margin: auto;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	background: #1314116;
+	overflow: hidden;
+    white-space: nowrap;
+}
+
+
+.boxtreize {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	height: 10%;
+	background: #1314116;
+}
+
+.eyes
+{
+	position: relative;
+	top:-40px;
+	display:flex;
+}
+
+
+.eyes .pointeur
+{
+	content:url('../img/piedblanc.png');
+	position: fixed;
+    top: 0px;
+    left: 0px;
+	width:80px;
+	height:80px;
+	margin: 0 0px;
+
+}
+
+
+.boxonze {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	height: 10%;
+	background: #1314116;
+}
+.boxyu {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	height: 10%;
+	background: #1314116;
+}
+.boxyusmall {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	height: 1%;
+	background: #1314116;
+}
+
+
+.txt{
+
+	width: 50%;
+	height: 100%;
+    background: #1314116;
+    position: relative;
+}
+
+
+#typed {
+    color: yellow;
+}
+
+
+
+
+
+.input-form {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 1.2em 0;
+}
+.input-email {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 1.2em 0;
+}
+.input-password {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 1.2em 0;
+}
+
+input, label, button {
+    transition: .3s;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+}
+
+label {
+    transform: translate(10px, -15px);
+    cursor: text;
+    transform-origin: left top;
+    position: absolute;
+    color:black;
+}
+
+input {
+    padding: 10px;
+    border: none; outline: none;
+    border-bottom: 5px solid #03e9f4;
+    border-radius:10px 10px 10px 10px;
+}
+button {
+    border: 0; padding: 12px 15px;
+    cursor: pointer; color: white;
+    background-color:#03e9f4;
+    color:black;
+    border-radius:10px 10px 10px 10px;
+}
+button:focus, button:hover {
+	color:black;
+    background-color: yellow;
+    border-radius:20px 20px 20px 20px;
+}
+
+
+.submit-form {
+    text-align: right;
+}
+
+input::placeholder {
+    opacity: 0;
+}
+
+input:focus,
+input:not(:placeholder-shown) {
+    border-bottom: 5px solid yellow;
+    border-radius:20px 20px 20px 20px;
+}
+
+input:not(:placeholder-shown) ~ label,
+input:focus ~ label {
+    transform: translate(10px, -40px) scale(.8);
+    padding-left: 0;
+    color: yellow;
+}
+
+
+
+
+.neonbutton{
+	color:#03e9f4;
+	text-decoration:none;
+	position:relative;
+	text-transform:uppercase;
+	padding: 25px 30px;
+	margin: 0px 60px;
+	letter-spacing:8px;
+	transition:.5s all;
+	overflow: hidden; 
+	margin-right: 50px;
+	font-size: 30px;
+}
+
+.neonbutton span{
+	position:absolute;
+	display: block;
+}
+.neonbutton span:nth-child(1){
+	top:0;
+	left:0;
+	width:100%;
+	height:2px;
+	background: linear-gradient(90deg, transparent,#03e9f4);
+	animation:animateUn 1s linear infinite;
+}
+@keyframes animateUn{
+	0%{
+		left:-100%;
+	}
+	50%, 100%{
+		left:100%;
+	}
+}
+.neonbutton span:nth-child(2){
+	top:-100%;
+	right:0;
+	width:2px;
+	height:100%;
+	background: linear-gradient(180deg, transparent,#03e9f4);
+	animation:animateDeux 1s linear infinite;
+	animation-delay:0.25s;
+}
+@keyframes animateDeux{
+	0%{
+		top:-100%;
+	}
+	50%, 100%{
+		top:100%;
+	}
+}
+.neonbutton span:nth-child(3){
+	bottom:0;
+	right:-100%;
+	width:100%;
+	height:2px;
+	background: linear-gradient(270deg, transparent,#03e9f4);
+	animation:animateTrois 1s linear infinite;
+	animation-delay:0.50s;
+}
+@keyframes animateTrois{
+	0%{
+		right:-100%;
+	}
+	50%, 100%{
+		right:100%;
+	}
+}
+.neonbutton span:nth-child(4){
+	bottom:-100%;
+	left:0;
+	width:2px;
+	height:100%;
+	background: linear-gradient(360deg, transparent,#03e9f4);
+	animation:animateQuatre 1s linear infinite;
+	animation-delay:0.75s;
+}
+@keyframes animateQuatre{
+	0%{
+		bottom:-100%;
+	}
+	50%, 100%{
+		bottom:100%;
+	}
+}
+
+.neonbutton:active{
+	/*background-color:#03e9f4;*/
+	color:yellow;
+	letter-spacing:2px;
+}
+
+.neonbutton:active > span:nth-child(1){
+	top:0;
+	left:0;
+	width:100%;
+	height:4px;
+	background: linear-gradient(90deg, transparent,yellow);
+	animation:animateUn 1s linear infinite;
+}
+.neonbutton:active > span:nth-child(2){
+	top:-100%;
+	right:0;
+	width:4px;
+	height:100%;
+	background: linear-gradient(180deg, transparent,yellow);
+	animation:animateDeux 1s linear infinite;
+	animation-delay:0.25s;
+}
+.neonbutton:active > span:nth-child(3){
+	bottom:0;
+	right:0;
+	width:100%;
+	height:4px;
+	background: linear-gradient(270deg, transparent,yellow);
+	animation:animateTrois 1s linear infinite;
+	animation-delay:0.50s;
+}
+.neonbutton:active > span:nth-child(4){
+	bottom:-100%;
+	left:0;
+	width:4px;
+	height:100%;
+	background: linear-gradient(360deg, transparent,yellow);
+	animation:animateQuatre 1s linear infinite;
+	animation-delay:0.75s;
+}
+
+.neonbutton:hover{
+	/*background-color:#03e9f4;*/
+	color:yellow;
+	letter-spacing:2px;
+}
+
+.neonbutton:hover > span:nth-child(1){
+	top:0;
+	left:0;
+	width:100%;
+	height:4px;
+	background: linear-gradient(90deg, transparent,yellow);
+	animation:animateUn 1s linear infinite;
+}
+.neonbutton:hover > span:nth-child(2){
+	top:-100%;
+	right:0;
+	width:4px;
+	height:100%;
+	background: linear-gradient(180deg, transparent,yellow);
+	animation:animateDeux 1s linear infinite;
+	animation-delay:0.25s;
+}
+.neonbutton:hover > span:nth-child(3){
+	bottom:0;
+	right:0;
+	width:100%;
+	height:4px;
+	background: linear-gradient(270deg, transparent,yellow);
+	animation:animateTrois 1s linear infinite;
+	animation-delay:0.50s;
+}
+.neonbutton:hover > span:nth-child(4){
+	bottom:-100%;
+	left:0;
+	width:4px;
+	height:100%;
+	background: linear-gradient(360deg, transparent,yellow);
+	animation:animateQuatre 1s linear infinite;
+	animation-delay:0.75s;
+}
+
+
+
+
+
